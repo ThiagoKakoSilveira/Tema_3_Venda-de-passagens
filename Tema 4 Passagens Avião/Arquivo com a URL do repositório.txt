@@ -1,0 +1,6 @@
+Segue url do repositório do trabalho no git.
+
+O nome do repositório esta com o número do tema correto. Porém na trabalho está como tema 4 mas foi um erro de digitação que passou despercebido o tema para o qual fui sorteado é o 3.
+
+https://github.com/ThiagoKakoSilveira/Tema_3_Venda-de-passagens.git 
+

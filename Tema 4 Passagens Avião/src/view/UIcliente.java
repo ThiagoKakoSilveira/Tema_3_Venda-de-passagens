@@ -51,7 +51,7 @@ public class UIcliente {
             String nome = Console.scanString("Nome: ");
             String telefone = Console.scanString("Telefone para Contato: ");
             listaClientes.addClientes(new Cliente(nome, rg, telefone));
-            System.out.println("Paciente " + nome + " cadastrado com sucesso!");
+            System.out.println("Cliente " + nome + " cadastrado com sucesso!");
         }
     }
 
