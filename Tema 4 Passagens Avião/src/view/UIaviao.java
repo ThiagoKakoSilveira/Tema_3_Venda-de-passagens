@@ -57,10 +57,12 @@ public class UIaviao {
         String nome = Console.scanString("Nome: ");
         if (listaAvioes.buscaAviaoPorNome(nome) != null) {
             System.out.println("Avião já existente no cadastro");
-        } else {
+        } else if(nome.matches("\\s*")) {
+            System.out.println("Erro: NOME VAZIO!!!");
+        } else{
             listaAvioes.addAviao(new Aviao(nome));
             System.out.println("Avião " + nome + " cadastrado com sucesso!");
-        }
+        } 
     }
 
     public void mostrarAvioes() {

@@ -60,8 +60,8 @@ public class Venda_de_Passagem {
     @Override
     public String toString() {
         String horaVendida = DateUtil.dateHourToString(horaVenda);
-        String venda = "----------------------------------------/n"
-                + " Código de Venda: " + this.codigo + " Vendida às " + horaVendida+"."
+        String venda = "----------------------------------------\n"
+                + " Código de Venda: " + this.codigo + " Vendida às " + horaVendida+" horas."
                 + "\n Nome do Passageiro: " + cliente.getNome()
                 + "\n " + voo;
         return venda;

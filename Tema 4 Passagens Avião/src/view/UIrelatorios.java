@@ -3,17 +3,16 @@ package view;
 import Repositorio.RepositorioPassagens;
 import Menus.RelatoriosMenu;
 import util.Console;
-import util.DateUtil;
-import java.util.Date;
 import java.util.InputMismatchException;
 import modelos.Venda_de_Passagem;
 
 public class UIrelatorios {
 
     RepositorioPassagens vendidas;
+  
 
     public UIrelatorios(RepositorioPassagens lista) {
-        vendidas = lista;
+        this.vendidas = lista;        
     }
 
     public void executar() {
@@ -32,8 +31,8 @@ public class UIrelatorios {
                     case RelatoriosMenu.OP_VisualizarPorOrigem:
                         visualizarPorOrigem();
                         break;
-                    case RelatoriosMenu.OP_VisualizarPorPassageiro:
-                        visualizarPorPassageiro();
+                    case RelatoriosMenu.OP_VisualizarPorVoo:
+                        visualizarPorVoo();
                         break;
                     case RelatoriosMenu.OP_VisualizarPorPeriodoDeVoo:
                         visualizarPorPeriodoDeVoo();
@@ -56,9 +55,10 @@ public class UIrelatorios {
 
     public void visualizarPorCliente() {
         String rg = Console.scanString(" Digite o RG da pesquisa: ");
+        System.out.println("\n Este cliente comprou a(s) passagem(ns):");
         for (Venda_de_Passagem vendas : vendidas.getListaPassagens()) {
             if (vendas.getCliente().getRG().equalsIgnoreCase(rg)) {
-                System.out.println("Este cliente comprou a passagem código: " + vendas.getCodigo() + "\t comprada às: " + DateUtil.dateHourToString(vendas.getHoraVenda()) + " horas.");
+                System.out.println(vendas);
             }
         }
     }
@@ -99,12 +99,13 @@ public class UIrelatorios {
         }
     }
 
-    public void visualizarPorPassageiro() {
-        String apresentacao = "Estes são os passageiros que compraram passagens: \n";
-        System.out.println(apresentacao);
-        for (Venda_de_Passagem venda : vendidas.getListaPassagens()) {
-            System.out.println(venda.getCliente());
-        }
+    public void visualizarPorVoo() {       
+        int idVoo = Console.scanInt("Digite o código de voo que deseja relatório: ");
+        for (Venda_de_Passagem vendida : vendidas.getListaPassagens()) {
+            if(vendida.getVoo().getCodigo() == idVoo){
+                System.out.println(vendida);                
+            }            
+        }      
     }
 
     public void visualizarPorPeriodoDeVoo() {

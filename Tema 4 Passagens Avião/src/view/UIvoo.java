@@ -139,7 +139,6 @@ public class UIvoo {
             } else {
                 System.out.println("Não Existe uma rota com esse código!!!\n Ponte Aérea não cadastrada.");
             }
-
         } else {
             System.out.println("Não existe esse avião");
         }

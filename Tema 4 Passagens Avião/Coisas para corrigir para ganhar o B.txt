@@ -1,0 +1,3 @@
+colocar mais informação nos relatórios.//Feito para relatório por cliente e por voo.
+invalidar o branco.// Corrigido
+invalidar RG com letras e pedir no mínimo e máximo de 10.// Corrigido

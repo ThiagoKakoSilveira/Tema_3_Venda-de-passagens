@@ -67,7 +67,7 @@ public class UIpassagem {
             switch (opcaoClienteInexistente) {
                 case MenuClienteInexistente.OP_CADASTRAR:
                     new UIcliente(clientes).cadastrarCliente();
-                    if (clientes.clienteExiste(idCliente)) {
+                    if (clientes.clienteExiste(Console.scanString("Digite novamente o RG do cliente recém cadastrado: "))) {
                         comprador = clientes.devolveCliente(idCliente);
                         System.out.println("Cliente Selecionado...");
                     } else {
@@ -88,7 +88,6 @@ public class UIpassagem {
         if (voos.vooExiste(idVoo)) {
             vooSel = voos.buscaVoo(idVoo);
             Date atual = new Date();
-
             vendas.addVendaPassagem(new Venda_de_Passagem(comprador, vooSel, atual));
             System.out.println("Venda cadastrada com sucesso...");
         } else {
