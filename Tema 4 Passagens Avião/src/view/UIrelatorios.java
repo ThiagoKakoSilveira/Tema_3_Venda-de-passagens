@@ -9,10 +9,9 @@ import modelos.Venda_de_Passagem;
 public class UIrelatorios {
 
     RepositorioPassagens vendidas;
-  
 
     public UIrelatorios(RepositorioPassagens lista) {
-        this.vendidas = lista;        
+        this.vendidas = lista;
     }
 
     public void executar() {
@@ -66,46 +65,42 @@ public class UIrelatorios {
     public void visualizarPorDestino() {
         UIvoo Amostra = new UIvoo();
         Amostra.mostrarDestinosExistentes();
-        String dest = Console.scanString("Copie dos destino apresentados e cole aqui: ");
+        String dest = Console.scanString("Copie dos destino apresentados a cima e cole aqui: ");
         if (Amostra.ExisteDestino(dest)) {
-            String apresentacao = "Códigos das passagens vendidas para esse destino:";
-            String cods = "";
-            //System.out.println("Códigos das passagens vendidas para esse destino: ");
+            System.out.println("Passagens vendidas com esse destino");
             for (Venda_de_Passagem vendas : vendidas.getListaPassagens()) {
                 if (vendas.getVoo().getDestino().equalsIgnoreCase(dest)) {
-                    cods += " " + vendas.getCodigo();
+                    System.out.println(vendas);
                 }
-                System.out.println(apresentacao + cods);
             }
+        } else {
+            System.out.println("Não teve Vendas dessa destino!");
         }
     }
 
     public void visualizarPorOrigem() {
         UIvoo Amostra = new UIvoo();
         Amostra.mostrarOrigensExistentes();
-        String origem = Console.scanString("Copie das origens apresentados e cole aqui: ");
+        String origem = Console.scanString("Copie das origens apresentadas a cima e cole aqui: ");
         if (Amostra.ExisteDestino(origem)) {
-            String apresentacao = "Códigos das passagens vendidas para essa origem:";
-            String cods = "";
-            //System.out.println("Códigos das passagens vendidas para esse destino: ");
+            System.out.println("Passagens vendidas com essa origem");
             for (Venda_de_Passagem vendas : vendidas.getListaPassagens()) {
                 if (vendas.getVoo().getOrigem().equalsIgnoreCase(origem)) {
-                    cods += " " + vendas.getCodigo();
+                    System.out.println(vendas);
                 }
             }
-            System.out.println(apresentacao + cods);
         } else {
             System.out.println("Não teve Vendas dessa origem!");
         }
     }
 
-    public void visualizarPorVoo() {       
+    public void visualizarPorVoo() {
         int idVoo = Console.scanInt("Digite o código de voo que deseja relatório: ");
         for (Venda_de_Passagem vendida : vendidas.getListaPassagens()) {
-            if(vendida.getVoo().getCodigo() == idVoo){
-                System.out.println(vendida);                
-            }            
-        }      
+            if (vendida.getVoo().getCodigo() == idVoo) {
+                System.out.println(vendida);
+            }
+        }
     }
 
     public void visualizarPorPeriodoDeVoo() {

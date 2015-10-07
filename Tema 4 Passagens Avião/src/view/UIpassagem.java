@@ -67,16 +67,39 @@ public class UIpassagem {
             switch (opcaoClienteInexistente) {
                 case MenuClienteInexistente.OP_CADASTRAR:
                     new UIcliente(clientes).cadastrarCliente();
-                    if (clientes.clienteExiste(Console.scanString("Digite novamente o RG do cliente recém cadastrado: "))) {
+                    if (clientes.clienteExiste(Console.scanString("\nDigite novamente o RG do cliente recém cadastrado: "))) {
                         comprador = clientes.devolveCliente(idCliente);
-                        System.out.println("Cliente Selecionado...");
+                        System.out.println("Cliente Selecionado com sucesso...");
                     } else {
-                        System.out.println("Erro na Seleção do Cliente");
+                        System.out.println("\nErro na Seleção do Cliente\n");
+                        return;
                     }
                     break;
                 case MenuClienteInexistente.OP_BUSCARNOME:
                     String nome = Console.scanString("Digite o nome que deseja procurar: ");
                     comprador = clientes.devolveClientePorNome(nome);
+                    if(comprador == null){
+                        System.out.println("Cliente não encontrado...\n Sistema retornando para o menu de Venda de Passagem");
+                        return;
+                    }else{
+                        System.out.println("Cliente encontrado com sucesso...\n Confira se os dados são realmente do cliente desejado: " + comprador);
+                        String resposta;
+                        do{
+                            resposta = Console.scanString("Este é o cliente que estava procurando? (s/n)");
+                            if(resposta.equalsIgnoreCase("s")){
+                                System.out.println("Cliente selecionado com sucesso...");
+                                break;
+                            }
+                            else if(resposta.equalsIgnoreCase("n")){
+                                System.out.println("Então Cadastre este novo Cliente\n Retornando para o Menu Venda de Passagens...");
+                                return;
+                            }
+                            System.out.println("Escreva apenas \"S/N\"");
+                        }while(!resposta.equalsIgnoreCase("s") || !resposta.equalsIgnoreCase("n"));
+                    }
+                    break;
+                case MenuClienteInexistente.OP_VOLTAR:
+                    System.out.println("Retornando para o menu Vendas de Passagem...");
                     break;
                 default:
                     System.out.println("Opção inválida...");

@@ -53,7 +53,7 @@ public class Cliente {
     
     @Override
     public String toString(){
-        String cliente = "Nome: "+this.nome+"RG: "+this.RG;
+        String cliente = "Nome: "+this.nome+" RG: "+this.RG+" Telefone: "+this.telefone;
         return cliente;        
     }
 }

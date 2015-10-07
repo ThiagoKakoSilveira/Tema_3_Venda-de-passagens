@@ -34,10 +34,10 @@ public class UIcliente {
                         System.out.println("Opção inválida..");
                 }
             } catch (InputMismatchException ex) {
-                System.out.println("Coloque apenas dígitos...");
+                System.out.println("\nColoque apenas dígitos...");
                 opcao = 100;
             } catch (Exception ex) {
-                System.out.println("Houve algum erro inesperado...");
+                System.out.println("\nHouve algum erro inesperado...");
                 opcao = 100;
             }
         } while (opcao != ClienteMenu.OP_VOLTAR);
@@ -46,26 +46,26 @@ public class UIcliente {
     public void cadastrarCliente() {
         String rg = Console.scanString("RG: ");
         if (listaClientes.clienteExiste(rg)) {
-            System.out.println("RG já existente no cadastro");
+            System.out.println("\nRG já existente no cadastro");
         } else if (rg.replace(" ", "").isEmpty() /*testando se é vazio*/) {
-            System.out.println("Erro: RG VAZIO");            
+            System.out.println("\nErro: RG VAZIO");            
         } else if (rg.matches("\\d{10,10}")) {
             String nome = Console.scanString("Escreva seu nome completo: ");
             if (nome.matches("\\s*")) {//testar com \s para ver se é vazio
-                System.out.println(" Erro: NOME VAZIO");                
+                System.out.println(" \nErro: NOME VAZIO");                
             } else if (nome.matches("[A-Za-z]+(\\s[A-Za-z]+)*")) {
                 String telefone = Console.scanString("Telefone para Contato: (xxxx-xxxx 4 números separado por hífem)");
                 if (!telefone.matches("\\d{4,4}-\\d{4,4}")) {
-                    System.out.println("Erro: Telefone digitado diferente do formato indicado!!!");                    
+                    System.out.println("\nErro: Telefone digitado diferente do formato indicado!!!");                    
                 } else {
                     listaClientes.addClientes(new Cliente(nome, rg, telefone));
-                    System.out.println("Cliente " + nome + " \ncadastrado com sucesso!");
+                    System.out.println("\nCliente " + nome + " \ncadastrado com sucesso!\n");
                 }
             }else {
-                System.out.println("Erro: O nome não pode conter números, caracteres especiais, ou começa em espaço ou ter mais de um espaço");              
+                System.out.println("\nErro: O nome não pode conter números, caracteres especiais, ou começa em espaço ou ter mais de um espaço");              
             }
         } else {
-            System.out.println("Erro:O RG não pode conter letras, espaços e no máximo 10 dígitos");            
+            System.out.println("\nErro:O RG não pode conter letras, espaços e no máximo 10 dígitos");            
         }
     }
 
